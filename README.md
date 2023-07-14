@@ -18,4 +18,8 @@
 
 ### 2 week
 
-- [ ] leetcode JS 30 Days 전체 풀기
+- [x] leetcode JS 30 Days 전체 풀기
+
+### 3week
+
+- [ ] leecode JS 30 Days 복습 & 정리하기
