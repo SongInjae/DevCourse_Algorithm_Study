@@ -22,4 +22,4 @@
 
 ### 3week
 
-- [ ] leecode JS 30 Days 복습 & 정리하기
+- [x] leetcode JS 30 Days 복습 & 정리하기
