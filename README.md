@@ -26,5 +26,5 @@
 
 ### 4week
 
-- [ ] leetcode JS top 100 Liked
- - [ ] Backtracking
+- [x] leetcode JS top 100 Liked
+ - [x] Backtracking
