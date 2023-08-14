@@ -10,6 +10,6 @@
     "node_modules"
   ],
   "include": [
-    "src/typescript/5week_binary_search/*.ts"
+    "src/typescript/7week_binary_tree/*.ts"
   ]
 }
