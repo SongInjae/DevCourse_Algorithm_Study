@@ -26,5 +26,10 @@
 
 ### 4week
 
+- [x] leetcode JS top 100 Liked
+ - [x] Backtracking
+
+### 5wwek
+
 - [ ] leetcode JS top 100 Liked
- - [ ] Backtracking
+  - [ ] Binary Search
