@@ -1,0 +1,69 @@
+const fs = require("fs");
+const path = require("path");
+const filepath = path.join(__dirname, "../example.txt");
+const input = fs.readFileSync(filepath).toString().trim();
+
+const alphabet = {
+  a: "n",
+  b: "o",
+  c: "p",
+  d: "q",
+  e: "r",
+  f: "s",
+  g: "t",
+  h: "u",
+  i: "v",
+  j: "w",
+  k: "x",
+  l: "y",
+  m: "z",
+  n: "a",
+  o: "b",
+  p: "c",
+  q: "d",
+  r: "e",
+  s: "f",
+  t: "g",
+  u: "h",
+  v: "i",
+  w: "j",
+  x: "k",
+  y: "l",
+  z: "m",
+  A: "N",
+  B: "O",
+  C: "P",
+  D: "Q",
+  E: "R",
+  F: "S",
+  G: "T",
+  H: "U",
+  I: "V",
+  J: "W",
+  K: "X",
+  L: "Y",
+  M: "Z",
+  N: "A",
+  O: "B",
+  P: "C",
+  Q: "D",
+  R: "E",
+  S: "F",
+  T: "G",
+  U: "H",
+  V: "I",
+  W: "J",
+  X: "K",
+  Y: "L",
+  Z: "M",
+};
+
+const result = [];
+
+for (let i = 0; i < input.length; i++) {
+  if (input[i] >= "A" && input[i] <= "Z") result.push(alphabet[input[i]]);
+  else if (input[i] >= "a" && input[i] <= "z") result.push(alphabet[input[i]]);
+  else result.push(input[i]);
+}
+
+console.log(result.join(""));
