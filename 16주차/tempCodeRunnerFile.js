@@ -1,51 +1,98 @@
-function findZeroBoard(needVisit) {
-  for (let row = 0; row < 9; row++) {
-    for (let column = 0; column < 9; column++) {
-      if (!map[row][column]) needVisit.push([row, column]);
-    }
+function alphaToNumber(str) {
+  switch (str) {
+    case "A":
+      return 0;
+    case "B":
+      return 1;
+    case "C":
+      return 2;
+    case "D":
+      return 3;
+    case "E":
+      return 4;
+    case "F":
+      return 5;
+    case "G":
+      return 6;
+    case "H":
+      return 7;
+    case "I":
+      return 8;
+    case "J":
+      return 9;
+    case "K":
+      return 10;
+    case "L":
+      return 11;
+    case "M":
+      return 12;
+    case "N":
+      return 13;
+    case "O":
+      return 14;
+    case "P":
+      return 15;
+    case "Q":
+      return 16;
+    case "R":
+      return 17;
+    case "S":
+      return 18;
+    case "T":
+      return 19;
+    case "U":
+      return 20;
+    case "V":
+      return 21;
+    case "W":
+      return 22;
+    case "X":
+      return 23;
+    case "Y":
+      return 24;
+    case "Z":
+      return 25;
   }
 }
-function checkSdoku(row, column, value) {
-  const threeRow = Math.floor(row / 3) * 3;
-  const threeColumn = Math.floor(column / 3) * 3;
+function bfs(row, column, checkVisit, str) {
+  const dr = [-1, 1, 0, 0];
+  const dc = [0, 0, -1, 1];
+  const visited = [...checkVisit];
 
-  for (let i = 0; i < 9; i++) {
-    if (map[i][column] === value || map[row][i] === value) return false;
-  }
+  if (maxCount < str.length) maxCount = str.length;
 
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      if (map[threeRow + i][threeColumn + j] === value) return false;
+  for (let i = 0; i < 4; i++) {
+    const newRow = row + dr[i];
+    const newColumn = column + dc[i];
+
+    if (
+      newRow >= 0 &&
+      newColumn >= 0 &&
+      newRow < r &&
+      newColumn < c &&
+      !visited[alphaToNumber(map[newRow][newColumn])]
+    ) {
+      visited[alphaToNumber(map[newRow][newColumn])] = true;
+      bfs(newRow, newColumn, visited, `${str}${map[newRow][newColumn]}`);
     }
   }
-
-  return true;
-}
-function dfs() {
-  const needVisit = [];
-  findZeroBoard(needVisit);
-
-  while (needVisit.length) {
-    const [row, column] = needVisit.shift();
-
-    for (let i = 1; i <= 9; i++) {
-      if (checkSdoku(row, column, i)) map[row][column] = i;
-    }
-  }
-}
-function print() {
-  const answer = [];
-
-  for (let i = 0; i < 9; i++) answer.push(map[i].join(" "));
-
-  console.log(answer.join("\n"));
 }
 
 const fs = require("fs");
 const path = require("path");
 const filepath = path.join(__dirname, "../example.txt");
-const [...input] = fs.readFileSync(filepath).toString().trim().split("\n");
-const map = input.map((str) => str.split(" ").map(Number));
+const [info, ...input] = fs
+  .readFileSync(filepath)
+  .toString()
+  .trim()
+  .split("\n");
 
-dfs();
-print();
+const [r, c] = info.split(" ").map(Number);
+const map = input.map((str) => str.split(""));
+
+const visit = Array(c).fill(false);
+let maxCount = 0;
+visit[alphaToNumber(map[0][0])] = true;
+
+bfs(0, 0, visit, map[0][0]);
+console.log(maxCount);
