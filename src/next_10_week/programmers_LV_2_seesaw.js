@@ -33,7 +33,7 @@ function solution(weights) {
 }
 
 // ! 시간초과
-function solution(weights) {
+function solution_fail(weights) {
 	const memo = {};
 	let result = 0;
 

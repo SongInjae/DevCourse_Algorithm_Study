@@ -87,6 +87,7 @@ function solution2(x, y, n) {
 	let answer = Infinity;
 
 	const done = {};
+
 	while (l < r) {
 		const [num, count] = queue[l++];
 		if (done[num] || num > y) continue;
