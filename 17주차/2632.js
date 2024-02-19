@@ -20,14 +20,8 @@ for (let i = 0; i < m; i++) {
   for (let j = 0; j < m; j++) {
     const index = (i + j) % m;
     sum += arr1[index];
-
     if (!sumObj[sum] || j === m - 1) sumObj[sum] = 1;
     else sumObj[sum] += 1;
-    if (sum === parseInt(goal)) {
-      if (j === m - 1) {
-        if (i === 0) answer += 1;
-      } else answer += 1;
-    }
   }
 }
 
@@ -35,14 +29,13 @@ for (let i = 0; i < n; i++) {
   let sum = 0;
 
   for (let j = 0; j < n; j++) {
+    if (i !== 0 && j === n - 1) continue;
     const index = (i + j) % n;
     sum += arr2[index];
     const rest = parseInt(goal) - sum;
-    if (j === n - 1 && sum === parseInt(goal)) {
-      if (i === 0) answer++;
-    } else if (sum === parseInt(goal)) answer += 1;
+    if (sum === parseInt(goal)) answer++;
     else if (sumObj[rest]) answer += sumObj[rest];
   }
 }
 
-console.log(answer);
+console.log(sumObj[parseInt(goal)] ? sumObj[parseInt(goal)] + answer : answer);
