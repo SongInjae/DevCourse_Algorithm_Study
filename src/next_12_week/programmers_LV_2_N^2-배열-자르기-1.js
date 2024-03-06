@@ -1,4 +1,4 @@
-// ! 배열 초과
+// ! 첫번째 풀이방법 -> 배열 초과 (core dumped)
 
 function solution(n, left, right) {
   const matrix = [...new Array(n)].map(() => new Array(n).fill(0));
